@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+    <head></head>
+    <body>
+        <script>
+            function computerPlay()
+            {
+                var choice = Math.floor((Math.random() * 3) + 1);
+                switch(choice) {
+                    case 1:
+                        return "rock";
+                        break;
+                    case 2:
+                        return "paper";
+                        break;
+                    case 3:
+                        return "scissors";
+                        break;
+                }
+            }
+            
+            function playRound(playerSelection, computerSelection)
+            {
+                switch (playerSelection.toLowerCase()) {
+                    case "rock":
+                        if (computerSelection == "rock") {
+                            return "BOOO!! Draws are for soccer and cold wars. Rock=Rock";
+                        }
+                        else if(computerSelection == "paper") {
+                            return "There's only first... and last. And you my friend, just came in last. Paper>Rock";
+                        }
+                        else if(computerSelection == "scissors") {
+                            return "PSA: Don't run with scissors! Beat them to death with a rock like a reasonable person.";
+                        }
+                        break;
+                    case "paper":
+                        if (computerSelection == "paper") {
+                            return "BOOO!! Draws are for soccer and cold wars. Paper=Paper";
+                        }
+                        else if (computerSelection == "scissors") {
+                            return "There's only first... and last. And you my friend, just came in last. Scissors>Paper";
+                        }
+                        else if(computerSelection == "rock") {
+                            return "I'm not sure how this won exactly, but Paper>Rock";
+                        }
+                        break;
+                    case "scissors":
+                        if (computerSelection == "scissors") {
+                            return "BOOO!! Draws are for soccer and cold wars. Scissors=Scissors";
+                        }
+                        else if(computerSelection == "rock") {
+                            return "There's only first... and last. And you my friend, just came in last. Rock>Scissors";
+                        }
+                        else if(computerSelection == "paper") {
+                            return "If you fold it a bunch and cut it just right, it looks like a giant snowflake! Scissors>Paper";
+                        }
+                        break;
+                }
+            }
+            
+            function game()
+            {
+                var playerScore = 0;
+                var computerScore = 0;
+                for (var i = 0; i < 5; i++) {
+                    var playerChoice = prompt("Rock paper scissors?");
+                    playerChoice.toLowerCase();
+                    var computerChoice = computerPlay();
+                    console.log(playRound(playerChoice, computerChoice));
+                    switch (playerChoice) {
+                        case "rock":
+                            if(computerChoice == "paper") {
+                                computerScore++;
+                            }
+                            else if(computerChoice == "scissors") {
+                                playerScore++;
+                            }
+                            break;
+                        case "paper":
+                            if(computerChoice == "scissors") {
+                                computerScore++;
+                            }
+                            else if(computerChoice == "rock") {
+                                playerScore++;
+                            }
+                            break;
+                        case "scissors":
+                            if(computerChoice == "rock") {
+                                computerScore++;
+                            }
+                            else if(computerChoice == "paper") {
+                                playerScore++;
+                            }
+                            break;
+                    }
+                    console.log("You : " + playerScore + "\nComputer : " + computerScore);
+                }   
+                
+                if (playerScore > computerScore) {
+                    console.log("You win!");
+                }
+                else {
+                    console.log("You Lose");
+                }
+            }
+            game();
+        </script>
+    </body>
+</html>
